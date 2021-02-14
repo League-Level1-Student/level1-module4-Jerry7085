@@ -30,51 +30,63 @@ public class SimonSays extends KeyAdapter {
 
 	// Complete steps 1 - 7 before you test
 	// 1. Declare a JFrame variable
-
+	JFrame f = new JFrame();
 	public void run() {
 		// 2. Add the four images that match keyboard keys like this:
 		// images.put(KeyEvent.VK_UP, "up.jpg");
-
+		images.put(KeyEvent.VK_UP, "up.jpg");
+		images.put(KeyEvent.VK_LEFT, "left.jpg");
+		images.put(KeyEvent.VK_RIGHT, "right.jpg");
+		images.put(KeyEvent.VK_DOWN, "down.jpg");
 		// 3. Use a JOptionPane to tell the user the rules: "Press the matching
 		// key when
 		// 'Simon says' otherwise press a different key"
-
+		JOptionPane.showMessageDialog(null, "Press the matching key when 'Simon says' otherwise press a different key");
 		// 4. Call the showImage method to show an image
-
+		showImage();
 	}
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-
+		int points = 0;
 		// 16. If the keyCode matches the imageIndex and "Simon says"
-
+		if(e.getKeyCode() == imageIndex && simonSays == true) {
+			points = points +1;
+		
+		}
 		// 17. Increase the value of score
-
+		
 		// 18. Use the speak method to tell the user they were correct
-
+		speak("correct");
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
 		// say..."
-
+		if(e.getKeyCode() != imageIndex && simonSays == false) {
+			points = points+1;
+			speak("correct");
+		}
 		// 20. Increase the value of score
-
+		
 		// 21. Use the speak method to tell the user they were correct
 
 		// 22. Increment tries by 1
-
+		tries = tries+1;
 		// 25. If tries is greater than 9 (or however many you want)...
-
+		if(tries > 9) {
+			JOptionPane.showMessageDialog(null, points);
+		}
 		// 26. Tell the user their score
 
 		// 27. Exit the program
-
+		System.exit(1);
 		// 23. Dispose of the frame
-
+		
 		// 24. Call the showImage method to show a new image
+		showImage();
 	}
 
 	private void showImage() {
 		// 5. Initialize your frame to a new JFrame()
-
+		
 		// 6. Set the frame to visible
 
 		// 7. Uncomment the following line to add a random image to your frame
